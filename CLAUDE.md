@@ -110,6 +110,9 @@ ordnerruecken-designer/
 ├── Ordnerruecken-Designer.command          # 🚀 Doppelklick zum Starten!
 ├── Ordnerruecken-Designer-Stoppen.command  # 🛑 Doppelklick zum Beenden!
 ├── CLAUDE.md                               # Diese Kontext-Datei
+├── .claude/
+│   └── commands/
+│       └── deploy.md                       # 🚀 /deploy Skill für Vercel
 ├── public/
 │   └── Logo_JM.png                         # JMTronic Logo
 ├── src/
@@ -181,6 +184,30 @@ interface TextSection {
 
 ---
 
+## Deployment
+
+**Live-URL:** https://ordnerruecken-designer.vercel.app
+
+### Automatisches Deployment mit Skill
+
+```
+/deploy
+```
+
+Dieser Skill führt automatisch Build und Deployment zu Vercel durch.
+
+### Manuelles Deployment
+
+```bash
+npm run build && \
+mkdir -p .vercel/output/static && \
+cp -r dist/* .vercel/output/static/ && \
+echo '{"version": 3}' > .vercel/output/config.json && \
+npx vercel deploy --prebuilt --prod --yes
+```
+
+---
+
 ## Entwicklung (für Entwickler)
 
 ```bash
@@ -212,6 +239,11 @@ npx tsc -b
 - ✅ Klick auf leeres Blatt erstellt Etikett
 - ✅ JMTronic Branding
 - ✅ Start-Skript für Mac (Doppelklick)
+
+### Februar 2026 - Version 1.1
+- ✅ Mehrzeilige Texteingabe für Kopfzeile und Textbereich (Enter für Zeilenumbruch)
+- ✅ Vercel Deployment eingerichtet (https://ordnerruecken-designer.vercel.app)
+- ✅ `/deploy` Skill für automatisches Deployment
 
 ### Bugfixes
 - 🐛 Fix: Horizontale Trennlinien-Position wird jetzt auch beim Drucken korrekt angewendet (PrintLabel Komponente)
