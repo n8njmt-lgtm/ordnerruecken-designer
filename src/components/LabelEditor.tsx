@@ -98,14 +98,14 @@ const TextSectionEditor: React.FC<{
 
   return (
     <div className="space-y-2">
-      {/* Texteingabe */}
+      {/* Texteingabe - mehrzeilig mit Zeilenumbruch-Unterstützung */}
       <div>
         <textarea
           value={section.text}
           onChange={(e) => updateField('text', e.target.value)}
-          placeholder={title === 'Kopfzeile' ? 'Ordnertitel eingeben...' : 'Zusatztext eingeben...'}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
-          rows={2}
+          placeholder={title === 'Kopfzeile' ? 'Ordnertitel eingeben...\n(Zeilenumbruch mit Enter)' : 'Zusatztext eingeben...\n(Zeilenumbruch mit Enter)'}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-vertical min-h-[60px]"
+          rows={3}
         />
       </div>
 
